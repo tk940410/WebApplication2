@@ -1,17 +1,27 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication2.Models;
+using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly HouseContext _houseContext; //先在全域宣告資料庫物件
+
+        public HomeController(HouseContext HouseContext) //這邊是依賴注入使用我們剛設定好的資料庫物件的寫法
         {
-            _logger = logger;
+            _houseContext = HouseContext;
         }
+        //private readonly ILogger<HomeController> _logger;
+
+        
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        
 
         public IActionResult Index()
         {
